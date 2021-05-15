@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="card mt-2">
+    <div class="card-header">
+      Nuevo Cliente
+    </div>
+    <div class="card-body">
+      <form #clienteform="ngForm" (ngSubmit)="actualizar()" [formGroup]="form">
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group mb-2">
+              <label for="nombres">
+                <strong>Nombre <span class="text-primary">*</span></strong>
+              </label>
+              <input id="nombre" type="text" class="form-control form-control-sm rounded" formControlName="nombre"
+                name="nombre" required placeholder="Ingrese nombres" autofocus="true" autocapitalize="none">
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group mb-2">
+              <label for="nombres">
+                <strong>Apellido <span class="text-primary">*</span></strong>
+              </label>
+              <input id="apellido" type="text" class="form-control form-control-sm rounded" formControlName="apellido"
+                name="apellido" required placeholder="Ingrese apellido" autofocus="true" autocapitalize="none">
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group mb-2">
+              <label for="telefono">
+                <strong>Edad <span class="text-primary">*</span></strong>
+              </label>
+              <input id="edad" type="number" class="form-control form-control-sm rounded" formControlName="edad" 
+                name="edad" required placeholder="Ingrese edad" autocapitalize="none">
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="form-group mb-2">
+              <label for="correo">
+                <strong>Fecha Nacimiento <span class="text-primary">*</span></strong>
+              </label>
+              <input id="fechaNacimiento" type="text" class="form-control form-control-sm rounded" formControlName="fechaNacimiento" 
+                name="fechaNacimiento" required placeholder="Ingrese fecha nacimiento" autocapitalize="none">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer text-muted">
+      <div class="text-right">
+        <div class="btn-group mr-1">
+          <button type="submit" class="btn btn-sm btn-primary rounded" title="Enviar"
+            [disabled]="!clienteform.form.valid || cargando" (click)="actualizar()">
+            <i class="fas" [ngClass]="{'fa-save': !cargando, 'fa-spinner fa-spin': cargando}"></i> 
+            Actualizar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

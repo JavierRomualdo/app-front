@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="card mt-2">
+    <div class="card-header">
+      Lista de clientes
+    </div>
+    <div class="card-body">
+      <button class="btn btn-secondary mb-2" *ngIf="cargando">
+        <i class="fas fa-spinner fa-spin"></i> Cargando
+      </button>
+      <a routerLink="/cliente/nuevo" class="btn btn-primary mb-2" *ngIf="!cargando">
+        <i class="fas fa-plus"></i> Nuevo
+      </a>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Fecha Nacimiento</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of listaClientes; index as i;">
+            <th scope="row">{{i+1}}</th>
+            <td>{{cliente.nombre}}</td>
+            <td>{{cliente.apellido}}</td>
+            <td>{{cliente.edad}}</td>
+            <td>{{cliente.fechaNacimiento}}</td>
+            <td>
+              <!-- <button class="btn btn-success" title="Editar" (click)="editar(cliente.key)">
+                <i class="fas fa-edit"></i>
+              </button>&nbsp; -->
+              <button class="btn btn-danger" title="Eliminar" (click)="eliminarCliente(cliente.key)">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card text-center mt-3">
+    <div class="card-header">
+      Cálculos
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Promedio de edad</h5>
+      <p class="card-text">{{promedio}}</p>
+      <h5 class="card-title">Desviación estándar entre las edades</h5>
+      <p class="card-text">{{desviacionEstandar}}</p>
+    </div>
+  </div>
+</div>
