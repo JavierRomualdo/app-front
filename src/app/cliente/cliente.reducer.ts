@@ -17,6 +17,8 @@ export type Action = PostActions.Actions;
 
 export function clienteReducer(state: Cliente[] = [], action) { // action: Action
     switch (action.type) {
+        case 'ADD_ALL_CLIENT':
+            return action.payload;
         case 'ADD_CLIENT':
         // case PostActions.ADD_CLIENT:
             return [...state, action.payload]
@@ -24,8 +26,10 @@ export function clienteReducer(state: Cliente[] = [], action) { // action: Actio
         case 'DELETE_CLIENT':
             // case PostActions.DELETE_CLIENT:
             const cliente = action.payload;
-            const index = state.findIndex(cl => cl.key == cliente.key);
-            state.splice(index,1);
+            if (state.length > 0) {
+                const index = state.findIndex(cl => cl.key == cliente.key);
+                state.splice(index,1);
+            }            
             return state;
         default:
             break;

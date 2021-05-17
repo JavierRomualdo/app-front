@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
 import { Cliente } from 'src/app/interfaces/cliente/cliente';
 import { ClienteService } from 'src/app/servicios/cliente/cliente.service';
 import { AppState } from '../app.state';
@@ -16,8 +15,6 @@ export class ClienteNuevoComponent implements OnInit {
 
   form: FormGroup;
   cargando: boolean = false;
-  // clienteStoreSubscription: Subscription;
-
 
   constructor(
     private router: Router,
@@ -25,10 +22,6 @@ export class ClienteNuevoComponent implements OnInit {
     private clienteService: ClienteService,
     private store: Store<AppState>
   ) {
-    // this.clienteStoreSubscription = this.store.select(state => state.cliente).subscribe(data => {
-    //   console.log('listaClientes nuevo store');
-    //   console.log(data);
-    // });
   }
 
   ngOnInit(): void {
@@ -57,8 +50,6 @@ export class ClienteNuevoComponent implements OnInit {
         console.log(cliente);
         this.router.navigate(['/cliente']);
       });
-
-      
     }
   }
 
@@ -76,7 +67,6 @@ export class ClienteNuevoComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    // this.clienteStoreSubscription.unsubscribe();
   }
 
 }
